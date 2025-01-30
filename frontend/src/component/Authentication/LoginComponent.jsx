@@ -5,6 +5,7 @@ import { useStore } from "../../store/store";
 export const LoginComponent = (props) => {
   //true = signup.
   const{loginOrSignUp,setLoginOrSignUp} = useStore()
+  const{authenticated,setAuthenticated} = useStore()
 
   const[email,setEmail] = useState("");
   const[password, setPassword] = useState("");

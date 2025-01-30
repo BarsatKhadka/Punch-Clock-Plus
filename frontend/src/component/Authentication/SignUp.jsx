@@ -7,6 +7,7 @@ export const SignUp = () =>{
     const[fullName , setFullName] = useState("");
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
+    
 
     const onHandleChange = (e) =>{
         const {name,value} = e.target;
