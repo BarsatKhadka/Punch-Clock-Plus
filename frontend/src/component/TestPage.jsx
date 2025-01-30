@@ -6,7 +6,7 @@ export const TestPage = () =>{
     useEffect(() =>{
         const fetchData = async() =>{
             const result = await request("GET","/hello")
-            setData(result.data)
+            setData(result)
 
         }
         
