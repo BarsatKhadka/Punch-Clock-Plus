@@ -3,14 +3,19 @@ import { request } from "../Utility/axios_helper"
 
 export const TestPage = () =>{
     const[data,setData] = useState("")
-    useEffect( async() =>{
-        const result = await request("GET", "/hello", {})
-        setData(result)
+    useEffect(() =>{
+        const fetchData = async() =>{
+            const result = await request("GET","/hello")
+            setData(result.data)
 
-    })
+        }
+        
+        fetchData()
+
+    },[])
     return(
         <>
-        {data}
+        <p>{data}</p>
         </>
     )
 }
