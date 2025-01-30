@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { SignUp } from "./SignUp";
+import { useStore } from "../../store/store";
 
 export const LoginComponent = (props) => {
   //true = signup.
-  const[loginOrSignUp , setLoginOrSignUp] = useState(true)
+  const{loginOrSignUp,setLoginOrSignUp} = useStore()
     return (
       <>
       {loginOrSignUp && 
@@ -28,14 +29,14 @@ export const LoginComponent = (props) => {
           </div>
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
           >
             Login
           </button>
         </form>
         <p className="mt-6 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
-          <a href="/signup" className="text-green-500 hover:underline">
+          <span className="text-red-500">Don't have an account?{" "}</span>
+          <a href="" className="text-gray-500 hover:underline lg:ml-2 ml-4" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
              Sign up
           </a>
         </p>

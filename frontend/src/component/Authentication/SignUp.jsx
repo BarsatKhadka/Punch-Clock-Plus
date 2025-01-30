@@ -1,4 +1,7 @@
+import {useStore} from "../../store/store"
+
 export const SignUp = () =>{
+    const{loginOrSignUp, setLoginOrSignUp} = useStore()
     return(
         <>
               <h2 className="text-2xl font-semibold mb-8 text-center text-gray-800">Create an Account</h2>
@@ -36,7 +39,7 @@ export const SignUp = () =>{
       </form>
       <p className="mt-6 text-center text-sm text-green-600">
         Already have an account?{" "}
-        <a href="/login" className="text-gray-500 hover:underline ml-2" >
+        <a href="/login" className="text-gray-500 hover:underline ml-2" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
           Login
         </a>
       </p>
