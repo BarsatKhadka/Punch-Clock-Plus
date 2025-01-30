@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Logo from "../assets/Logo.png"
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,8 +8,8 @@ export const Navbar = () => {
     <nav className="bg-neutral-200 text-neutral-900 p-4 shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <div className="text-2xl font-bold text-neutral-900">Logo</div>
-          <div className="text-lg font-light text-neutral-600">Punch Clock +</div>
+          <div className="text-2xl font-bold text-neutral-900"><img src={Logo} width={50} height={10}/></div>
+          <div className="text-lg font-bold text-black-600">Punch Clock - Plus</div>
         </div>
         <div className="hidden md:flex space-x-6">
           <a href="#home" className="text-neutral-900 hover:text-neutral-600">Home</a>
