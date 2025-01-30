@@ -1,7 +1,25 @@
+import { useState } from "react";
 import {useStore} from "../../store/store"
 
 export const SignUp = () =>{
     const{loginOrSignUp, setLoginOrSignUp} = useStore()
+    
+    const[fullName , setFullName] = useState("");
+    const[email,setEmail] = useState("")
+    const[password,setPassword] = useState("")
+
+    const onHandleChange = (e) =>{
+        const {name,value} = e.target;
+        if(name == "fullName"){
+            setFullName(value);
+        }
+        if(name == "email"){
+            setEmail(value)
+        }
+        if(name=="password"){
+            setPassword(value)
+        }
+    }
     return(
         <>
               <h2 className="text-2xl font-semibold mb-8 text-center text-gray-800">Create an Account</h2>
@@ -12,6 +30,8 @@ export const SignUp = () =>{
             type="text"
             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
             placeholder="Full Name"
+            name="fullName"
+            onChange={onHandleChange}
           />
         </div>
         <div>
@@ -20,6 +40,8 @@ export const SignUp = () =>{
             type="email"
             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
             placeholder="Email"
+            name="email"
+            onChange={onHandleChange}
           />
         </div>
         <div>
@@ -28,6 +50,8 @@ export const SignUp = () =>{
             type="password"
             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
             placeholder="Password"
+            name="password"
+            onChange={onHandleChange}
           />
         </div>
         <button

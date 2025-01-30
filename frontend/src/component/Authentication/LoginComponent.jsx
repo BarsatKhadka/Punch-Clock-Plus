@@ -5,6 +5,25 @@ import { useStore } from "../../store/store";
 export const LoginComponent = (props) => {
   //true = signup.
   const{loginOrSignUp,setLoginOrSignUp} = useStore()
+
+  const[email,setEmail] = useState("");
+  const[password, setPassword] = useState("");
+
+
+  const onHandleChange = (e) =>{
+    const {name,value} = e.target;
+
+    if(name === "email"){
+    setEmail(e.target.value);
+    }
+
+    if(name === "password"){
+      setPassword(e.target.value);
+    }
+  }
+
+  
+
     return (
       <>
       {loginOrSignUp && 
@@ -15,16 +34,22 @@ export const LoginComponent = (props) => {
             <input
               id="email"
               type="email"
+              name="email"
               className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
               placeholder="Email"
+              onChange={onHandleChange}
+              required
             />
           </div>
           <div>
             <input
               id="password"
               type="password"
+              name="password"
               className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
               placeholder="Password"
+              onChange={onHandleChange}
+              required
             />
           </div>
           <button
@@ -38,7 +63,7 @@ export const LoginComponent = (props) => {
           <span className="text-red-500">Don't have an account?{" "}</span>
           <a href="" className="text-gray-500 hover:underline lg:ml-2 ml-4" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
              Sign up
-          </a>
+          </a>  
         </p>
         </>
         }
