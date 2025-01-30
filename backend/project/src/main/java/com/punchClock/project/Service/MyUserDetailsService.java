@@ -1,8 +1,8 @@
 package com.punchClock.project.Service;
 
-import com.Barsat.Github.Repository.Management.Models.TheUser;
-import com.Barsat.Github.Repository.Management.Models.TheUserSecurityDetails;
-import com.Barsat.Github.Repository.Management.Repository.UserRepo;
+import com.punchClock.project.Modals.TheUser;
+import com.punchClock.project.Modals.TheUserSecurityDetails;
+import com.punchClock.project.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
