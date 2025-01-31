@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useStore} from "../../store/store"
+import { request } from "../../Utility/axios_helper";
 
 export const SignUp = () =>{
     const{loginOrSignUp, setLoginOrSignUp} = useStore()
@@ -7,6 +8,8 @@ export const SignUp = () =>{
     const[fullName , setFullName] = useState("");
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
+
+
     
 
     const onHandleChange = (e) =>{
@@ -20,6 +23,17 @@ export const SignUp = () =>{
         if(name=="password"){
             setPassword(value)
         }
+    }
+
+    const signUp = async(e) =>{
+      e.preventDefault()
+      const result = await request("POST","/register",{"username": fullName, "email": email , "password": password})
+      
+      //this means user has signed up and now he has to log in , so i redirect to login page.
+      if(result.data === "You are registered successfully."){
+        setLoginOrSignUp(!loginOrSignUp);
+      }
+      
     }
     return(
         <>
@@ -58,6 +72,7 @@ export const SignUp = () =>{
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          onClick={signUp}
         >
           Sign Up
         </button>
