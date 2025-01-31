@@ -8,6 +8,7 @@ export const SignUp = () =>{
     const[fullName , setFullName] = useState("");
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
+    const[errorMessage, setErrorMessage] = useState("");
 
 
     
@@ -26,6 +27,12 @@ export const SignUp = () =>{
     }
 
     const signUp = async(e) =>{
+
+      if(password.length <= 6){
+        setErrorMessage("**Passwords should be atleast 7 characters.")
+        return;
+      }
+
       e.preventDefault()
       const result = await request("POST","/register",{"username": fullName, "email": email , "password": password})
       
@@ -33,7 +40,7 @@ export const SignUp = () =>{
       if(result.data === "You are registered successfully."){
         setLoginOrSignUp(!loginOrSignUp);
       }
-      
+
     }
     return(
         <>
@@ -83,6 +90,7 @@ export const SignUp = () =>{
           Login
         </a>
       </p>
+      {errorMessage}
         </>
     )
 }
