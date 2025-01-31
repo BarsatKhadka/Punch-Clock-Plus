@@ -23,12 +23,12 @@ public class TheUser {
     @JsonIgnore
     private String password;
 
-    @Column(length = 10000)
-    private String avatarUrl;
-
-    private String bio ;
-
     private boolean isEnabled;
 
-    private boolean emailVerified;
+
+    public TheUser(String username ,String email , String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
