@@ -29,7 +29,7 @@ export const SignUp = () =>{
     const signUp = async(e) =>{
 
       if(password.length <= 6){
-        setErrorMessage("**Passwords should be atleast 7 characters.")
+        setErrorMessage("Passwords should be atleast 7 characters.")
         return;
       }
 
@@ -38,6 +38,7 @@ export const SignUp = () =>{
         setErrorMessage("Email format not valid.")
         return;
       }
+      
 
       e.preventDefault()
       const result = await request("POST","/register",{"username": fullName, "email": email , "password": password})
@@ -96,7 +97,11 @@ export const SignUp = () =>{
           Login
         </a>
       </p>
-      {errorMessage}
+      {errorMessage && (
+        <p className="mt-8 text-center text-lg text-red-600 flex items-center justify-center">
+          <span className="mr-2">&#x26A0;</span> {errorMessage}
+        </p>  
+      )}
         </>
     )
 }
