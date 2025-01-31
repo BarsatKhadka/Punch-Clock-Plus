@@ -46,6 +46,13 @@ export const LoginComponent = (props) => {
         if(result.data === "invalid"){
           setErrorMessage("Invalid full name or password.")
         }
+
+        if(result.data.startsWith("token")){
+          sessionStorage.setItem("jwt",result.data.substring(5))
+          setAuthenticated(true)
+        }
+
+        
   
       }
   
@@ -98,8 +105,8 @@ export const LoginComponent = (props) => {
         <p className="mt-8 text-center lg:text-lg text-red-600 flex items-center justify-center ">
           <span className="mr-2">&#x26A0;</span> {errorMessage}
         </p>  
-      )}
         
+      )}   
         </>
         }
 
