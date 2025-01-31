@@ -38,6 +38,11 @@ export const SignUp = () =>{
         setErrorMessage("Email format not valid.")
         return;
       }
+
+      if(fullName === ""){
+        setErrorMessage("Please enter your full name.")
+        return;
+      }
       
 
       e.preventDefault()
@@ -61,6 +66,7 @@ export const SignUp = () =>{
             placeholder="Full Name"
             name="fullName"
             onChange={onHandleChange}
+            required
           />
         </div>
         <div>
