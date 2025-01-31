@@ -1,20 +1,23 @@
 import { useState } from "react";
 import { SignUp } from "./SignUp";
 import { useStore } from "../../store/store";
+import { request } from "../../Utility/axios_helper";
 
 export const LoginComponent = (props) => {
   //true = signup.
   const{loginOrSignUp,setLoginOrSignUp} = useStore()
   const{authenticated,setAuthenticated} = useStore()
+  
 
+  //email (actually is full Name)
   const[email,setEmail] = useState("");
   const[password, setPassword] = useState("");
-
+  const[errorMessage,setErrorMessage] = useState("")
 
   const onHandleChange = (e) =>{
     const {name,value} = e.target;
 
-    if(name === "email"){
+    if(name === "fullName"){
     setEmail(e.target.value);
     }
 
@@ -22,6 +25,29 @@ export const LoginComponent = (props) => {
       setPassword(e.target.value);
     }
   }
+
+   const logIn = async(e) =>{
+  
+        if(password.length <= 6){
+          setErrorMessage("Passwords should be atleast 7 characters.")
+          return;
+        }
+  
+        if(fullName === ""){
+          setErrorMessage("Please enter your full name.")
+          return;
+        }
+        
+  
+        e.preventDefault()
+        const result = await request("POST","/login",{"username": email, "password": password})
+        
+        //this means login details are invalid
+        if(result.data === "invalid"){
+          setErrorMessage("Invalid full name or password.")
+        }
+  
+      }
   
 
   
@@ -34,11 +60,11 @@ export const LoginComponent = (props) => {
         <form className="space-y-6">
           <div>
             <input
-              id="email"
-              type="email"
-              name="email"
+              id="fullName"
+              type="text"
+              name="fullName"
               className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
-              placeholder="Email"
+              placeholder="Full Name"
               onChange={onHandleChange}
               required
             />
@@ -57,16 +83,23 @@ export const LoginComponent = (props) => {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            onClick={logIn}
           >
-            Login
+            Log in
           </button>
         </form>
         <p className="mt-6 text-center text-sm text-gray-600">
           <span className="text-red-500">Don't have an account?{" "}</span>
           <a href="" className="text-gray-500 hover:underline lg:ml-2 ml-4" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
-             Sign up
+             Sign up 
           </a>  
         </p>
+        {errorMessage && (
+        <p className="mt-8 text-center text-lg text-red-600 flex items-center justify-center">
+          <span className="mr-2">&#x26A0;</span> {errorMessage}
+        </p>  
+      )}
+        
         </>
         }
 
@@ -75,6 +108,7 @@ export const LoginComponent = (props) => {
         <SignUp/>
         </>
         }
+        
       </>
     );
   };
