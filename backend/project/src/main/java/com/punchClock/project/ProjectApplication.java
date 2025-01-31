@@ -1,5 +1,6 @@
 package com.punchClock.project;
 
+import com.punchClock.project.DTO.SignUpRequest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

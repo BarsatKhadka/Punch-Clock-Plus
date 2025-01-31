@@ -1,8 +1,14 @@
 package com.punchClock.project.Config;
 
+import com.punchClock.project.Config.Jwt.JwtFilter;
+import com.punchClock.project.Service.MyUserDetailsService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -21,6 +27,18 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final MyUserDetailsService userDetailsService;
+    private final JwtFilter jwtFilter;
+
+
+
+    public SecurityConfig(MyUserDetailsService userDetailsService , JwtFilter jwtFilter) {
+        this.userDetailsService = userDetailsService;
+        this.jwtFilter = jwtFilter;
+    }
+
+    private AuthenticationManager authenticationManager;
+
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
@@ -28,12 +46,12 @@ public class SecurityConfig {
         //Csrf configurations (Ignoring csrf in public api's)
         http.csrf(csrf -> csrf
 //                .disable());
-                .ignoringRequestMatchers("/public/**"));
+                .ignoringRequestMatchers("/public/**", "/login", "/register"));
 
         //http session management stateless + giving permit all to public requests.
         http.sessionManagement(Management -> Management.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/hello").permitAll()
+                        .requestMatchers("/hello","/register","/login").permitAll()
                         .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
@@ -43,6 +61,24 @@ public class SecurityConfig {
         //return this by building it.
         return http.build();
 
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+
+        //read encoded password from database
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+
+        //UserDetails service loads User repository and dao checks if credentials are correct.
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+
+        return daoAuthenticationProvider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 
 

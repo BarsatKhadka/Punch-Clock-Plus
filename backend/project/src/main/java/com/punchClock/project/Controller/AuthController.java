@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/easyrepo/auth")
 public class AuthController {
 
 
@@ -20,11 +19,6 @@ public class AuthController {
     public AuthController(AuthService authService, UserRepo userRepo) {
         this.authService = authService;
         this.userRepo = userRepo;
-    }
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello World";
     }
 
     @PostMapping("/register")

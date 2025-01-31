@@ -25,7 +25,7 @@ public class AuthService {
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-
+    @Autowired
     AuthenticationManager authenticationManager;
 
 
@@ -38,16 +38,12 @@ public class AuthService {
         //get the normal password and encode it by Bcrypt before sending it to database
         newUser.setPassword(encoder.encode(signUpRequest.getPassword()));
 
-
-
         return new ResponseEntity<> (userRepo.save(newUser) , HttpStatus.CREATED);
     }
 
 
     public String loginVerify(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
-
 
         //generate jwt token if authenticated
         if(authentication.isAuthenticated()) {

@@ -31,4 +31,8 @@ public class TheUser {
         this.email = email;
         this.password = password;
     }
+
+    public TheUser() {
+
+    }
 }
