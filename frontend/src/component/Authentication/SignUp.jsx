@@ -33,6 +33,12 @@ export const SignUp = () =>{
         return;
       }
 
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if(!emailRegex.test(email)){
+        setErrorMessage("Email format not valid.")
+        return;
+      }
+
       e.preventDefault()
       const result = await request("POST","/register",{"username": fullName, "email": email , "password": password})
       
