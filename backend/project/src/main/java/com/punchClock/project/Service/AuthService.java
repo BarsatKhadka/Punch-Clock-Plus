@@ -11,8 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.security.SignatureException;
 
 @Service
 public class AuthService {
@@ -26,7 +30,7 @@ public class AuthService {
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
 
 
@@ -42,17 +46,27 @@ public class AuthService {
     }
 
 
-    public String loginVerify(LoginRequest loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+    public String loginVerify(@RequestBody LoginRequest loginRequest) {
 
-        //generate jwt token if authenticated
-        if(authentication.isAuthenticated()) {
-            return jwtUtils.generateToken(loginRequest.getUsername());
+        TheUser theUser = userRepo.findByUsername(loginRequest.getUsername());
+        if(theUser == null) {
+            return "invalid";
         }
 
+        String password = loginRequest.getPassword();
+        boolean matches = encoder.matches(password, theUser.getPassword());
 
-        return "Invalid username or password";
+        if(matches) {
+            Authentication authentication = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            return jwtUtils.generateToken(loginRequest.getUsername());
 
+
+        }
+
+        return "invalid";
 
     }
+
+
 }

@@ -9,4 +9,8 @@ public class TestController {
     public String hello() {
         return "hello";
     }
+    @GetMapping("/helloAuthenticate")
+    public String helloAuthenticate() {
+        return "helloAuthenticate";
+    }
 }

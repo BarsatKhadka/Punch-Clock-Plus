@@ -3,6 +3,7 @@ package com.punchClock.project.Config;
 import com.punchClock.project.Config.Jwt.JwtFilter;
 import com.punchClock.project.Service.MyUserDetailsService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -31,13 +33,10 @@ public class SecurityConfig {
     private final JwtFilter jwtFilter;
 
 
-
     public SecurityConfig(MyUserDetailsService userDetailsService , JwtFilter jwtFilter) {
         this.userDetailsService = userDetailsService;
         this.jwtFilter = jwtFilter;
     }
-
-    private AuthenticationManager authenticationManager;
 
 
     @Bean
@@ -49,16 +48,14 @@ public class SecurityConfig {
                 .ignoringRequestMatchers("/public/**", "/login", "/register"));
 
         //http session management stateless + giving permit all to public requests.
-        http.sessionManagement(Management -> Management.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+        http.sessionManagement(Management -> Management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/hello","/register","/login").permitAll()
                         .anyRequest().authenticated())
+                .addFilterBefore(jwtFilter , UsernamePasswordAuthenticationFilter.class)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
-        //enabling this makes you require to pass authorization header with base64 code
-        http.httpBasic(withDefaults());
 
-        //return this by building it.
         return http.build();
 
     }

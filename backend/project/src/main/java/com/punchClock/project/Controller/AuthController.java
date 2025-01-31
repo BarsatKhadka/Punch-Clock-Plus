@@ -1,12 +1,15 @@
 package com.punchClock.project.Controller;
 
+import com.punchClock.project.Config.Jwt.JwtUtils;
 import com.punchClock.project.DTO.LoginRequest;
 import com.punchClock.project.DTO.SignUpRequest;
-import com.punchClock.project.Modals.AuthResponse;
 import com.punchClock.project.Repository.UserRepo;
 import com.punchClock.project.Service.AuthService;
+import com.punchClock.project.Service.MyUserDetailsService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,10 +18,16 @@ public class AuthController {
 
     private final AuthService authService;
     private final UserRepo userRepo;
+    private final MyUserDetailsService userDetailsService;
 
-    public AuthController(AuthService authService, UserRepo userRepo) {
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    public AuthController(AuthService authService, UserRepo userRepo , MyUserDetailsService userDetailsService) {
         this.authService = authService;
         this.userRepo = userRepo;
+        this.userDetailsService = userDetailsService;
     }
 
     @PostMapping("/register")
@@ -38,20 +47,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest) {
-
-        AuthResponse authResposne = new AuthResponse();
-
-        if(userRepo.existsByUsername(loginRequest.getUsername()) & authService.loginVerify(loginRequest) == "Invalid username or password") {
-            authResposne.setMessage("Invalid username or password");
-            return ResponseEntity.badRequest().body(authResposne);
-        }
-        else{
-            authResposne.setMessage("Logged in");
-            authResposne.setJwtToken(authService.loginVerify(loginRequest));
-            return ResponseEntity.ok(authResposne);
-        }
-
+    public String login(@RequestBody LoginRequest loginRequest) {
+        return authService.loginVerify(loginRequest);
 
     }
 
