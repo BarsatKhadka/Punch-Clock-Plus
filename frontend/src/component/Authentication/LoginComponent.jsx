@@ -90,12 +90,12 @@ export const LoginComponent = (props) => {
         </form>
         <p className="mt-6 text-center text-sm text-gray-600">
           <span className="text-red-500">Don't have an account?{" "}</span>
-          <a href="" className="text-gray-500 hover:underline lg:ml-2 ml-4" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
+          <a href="" className="text-gray-500 hover:underline lg:ml-2 ml-1" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
              Sign up 
           </a>  
         </p>
         {errorMessage && (
-        <p className="mt-8 text-center text-lg text-red-600 flex items-center justify-center">
+        <p className="mt-8 text-center lg:text-lg text-red-600 flex items-center justify-center ">
           <span className="mr-2">&#x26A0;</span> {errorMessage}
         </p>  
       )}

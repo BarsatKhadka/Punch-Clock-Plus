@@ -99,12 +99,12 @@ export const SignUp = () =>{
       </form>
       <p className="mt-6 text-center text-sm text-green-600">
         Already have an account?{" "}
-        <a href="/login" className="text-gray-500 hover:underline ml-2" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
+        <a href="/login" className="text-gray-500 hover:underline ml-1 lg:ml-2" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
           Login
         </a>
       </p>
       {errorMessage && (
-        <p className="mt-8 text-center text-lg text-red-600 flex items-center justify-center">
+        <p className="mt-8 text-center lg:text-lg  text-red-600 flex items-center justify-center">
           <span className="mr-2">&#x26A0;</span> {errorMessage}
         </p>  
       )}
