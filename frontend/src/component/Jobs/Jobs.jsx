@@ -5,7 +5,7 @@ import axios from "axios";
 
 const JobsCard = (props) => {
     return (
-        <div className="bg-white text-black p-3 rounded-2xl shadow-md flex flex-col gap-2 mt-8">
+        <div className="bg-white text-black p-3 rounded-2xl shadow-md flex flex-col gap-2 mt-8 mb-4">
           <span className="text-md font-semibold">{props.JobName}</span>
           <p className="text-sm text-gray-600">{props.JobDescription}</p>
           <div className="flex justify-end gap-2">
@@ -45,7 +45,10 @@ export const Jobs = () =>{
     return(
         <>
         <div className="ml-8 mt-12">
-        <span className="font-semibold"> Your Jobs</span> 
+         <span className="font-semibold">Your Jobs <button className=" ml-[200px] lg:ml-[600px] bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+  Create Job
+</button> </span>
+         
         {allJobs.length > 0 ? (
                     allJobs.map((job,index) => {
                         return (
