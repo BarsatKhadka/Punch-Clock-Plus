@@ -17,13 +17,18 @@ export const Navbar = () => {
     if(jwt){
     decodedToken = jwtDecode(jwt)
     }
-
+    
     username = (decodedToken?.sub)
 
   }
 
   getUserName()
 
+  const onSignOut = () =>{
+    sessionStorage.removeItem("jwt")
+    setAuthenticated(false)
+    
+  }
 
   return (
     <nav className="bg-neutral-200 text-neutral-900 p-2 shadow-sm border-b border-black">
@@ -43,7 +48,7 @@ export const Navbar = () => {
           <span className="hover:text-green-600">{username}</span>
           </a>
           <button 
-          // onClick={onSignOut} 
+          onClick={onSignOut} 
           className="flex items-center space-x-2 text-neutral-900 hover:text-red-600"
         >
           <FaSignOutAlt />
