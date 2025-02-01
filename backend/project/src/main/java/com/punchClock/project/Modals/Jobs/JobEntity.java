@@ -1,9 +1,12 @@
 package com.punchClock.project.Modals.Jobs;
 
+import com.punchClock.project.Modals.EmployeeEntity.EmployeeEntity;
 import com.punchClock.project.Modals.TheUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +21,9 @@ public class JobEntity {
 
     @ManyToOne
     private TheUser createdByUser;
+
+    @OneToMany(mappedBy = "jobEntity")
+    private List<EmployeeEntity> employeeEntity;
 
 
 
