@@ -2,6 +2,9 @@ import { MdOutlineSchedule } from "react-icons/md";
 import { HiOutlineUsers } from "react-icons/hi"; 
 import { useEffect } from "react";
 import { request } from "../../Utility/axios_helper";
+// import { useStore } from "../../store/store.jsx";
+
+// const {authenticated} = useStore();
 
 const JobsCard = (props) => {
     return (
@@ -21,7 +24,9 @@ const JobsCard = (props) => {
   };
 
 
+
 export const Jobs = () =>{
+
     return(
         <>
         <div className="ml-8 mt-12">

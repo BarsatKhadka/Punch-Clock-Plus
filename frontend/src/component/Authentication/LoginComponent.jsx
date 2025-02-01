@@ -70,7 +70,7 @@ export const LoginComponent = (props) => {
               id="fullName"
               type="text"
               name="fullName"
-              className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
+              className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400 text-black"
               placeholder="Full Name"
               onChange={onHandleChange}
               required
@@ -78,10 +78,10 @@ export const LoginComponent = (props) => {
           </div>
           <div>
             <input
-              id="password"
+              id="password" 
               type="password"
               name="password"
-              className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
+              className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400 text-black"
               placeholder="Password"
               onChange={onHandleChange}
               required

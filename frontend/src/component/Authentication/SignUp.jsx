@@ -62,7 +62,7 @@ export const SignUp = () =>{
           <input
             id="name"
             type="text"
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
+            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400 text-black"
             placeholder="Full Name"
             name="fullName"
             onChange={onHandleChange}
@@ -73,7 +73,7 @@ export const SignUp = () =>{
           <input
             id="email"
             type="email"
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
+            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400 text-black"
             placeholder="Email"
             name="email"
             onChange={onHandleChange}
@@ -83,7 +83,7 @@ export const SignUp = () =>{
           <input
             id="password"
             type="password"
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"
+            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400 text-black"
             placeholder="Password"
             name="password"
             onChange={onHandleChange}
