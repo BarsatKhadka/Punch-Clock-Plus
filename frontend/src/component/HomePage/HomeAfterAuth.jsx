@@ -1,3 +1,4 @@
+import { CurrentTime } from "../CurrentTime/CurrentTime";
 import { Jobs } from "../Jobs/Jobs";
 export const HomeAfterAuth = () => {
     return (
@@ -5,8 +6,8 @@ export const HomeAfterAuth = () => {
         <div className="flex-1 bg-blue-500 flex text-white text-2xl"> 
          <Jobs/>
         </div>
-        <div className="flex-1 bg-green-500 flex items-center justify-center text-white text-2xl">
-          Right Side
+        <div className="flex-1 bg-green-500 flex text-white text-2xl">
+          <CurrentTime/>
         </div>
       </div>
     );
