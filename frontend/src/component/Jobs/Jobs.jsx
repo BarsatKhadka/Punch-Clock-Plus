@@ -5,7 +5,7 @@ import axios from "axios";
 
 const JobsCard = (props) => {
     return (
-        <div className="bg-white text-black p-3 rounded-2xl shadow-md flex flex-col gap-2 mt-8 mb-4">
+        <div className="bg-white text-black p-3 rounded-2xl shadow-md flex flex-col gap-2 mt-8 mb-4 border-black border-2">
             <span className="text-md font-semibold">{props.JobName}</span>
             <p className="text-sm text-gray-600">{props.JobDescription}</p>
             <div className="flex justify-end gap-2">

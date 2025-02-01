@@ -42,12 +42,12 @@ export const CurrentTime = () =>{
     
     return (
         <>
-        <p>{formatTime()}</p>
-        {/* did this because currentDay comes in index 0-6 */}
-        <p>{days[currentDay]}</p>
-        {/* same for this in js */}
-        <p>{months[currentMonth]}</p>
-        <p>{currentDate}</p>
+        <div className="ml-8 mt-8 p-6 bg-white rounded-lg shadow-md w-64 inline-block">
+            <p className="text-2xl font-semibold text-gray-800">{formatTime()}</p>
+            <p className="text-lg text-gray-600">
+                {days[currentDay]}, {months[currentMonth]} {currentDate}
+            </p>
+            </div>
         
         </>
     )
