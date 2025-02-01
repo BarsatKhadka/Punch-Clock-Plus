@@ -1,8 +1,24 @@
 import { useState } from "react";
 import Logo from "../assets/Logo.png"
+import { useStore } from "../store/store.jsx";
+import { jwtDecode } from "jwt-decode";
+import { FaRegUser } from "react-icons/fa";
+
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {authenticated} = useStore()
+
+  let username = "Guest"
+  const getUserName = () =>{
+    const jwt = sessionStorage.getItem("jwt");
+    let decodedToken = null
+    decodedToken = jwtDecode(jwt)
+    username = (decodedToken?.sub)
+
+  }
+
+  getUserName()
 
   return (
     <nav className="bg-neutral-200 text-neutral-900 p-2 shadow-sm border-b border-black">
@@ -12,9 +28,26 @@ export const Navbar = () => {
           <div className="text-lg font-bold text-black-600">Punch Clock - Plus</div>
         </div>
         <div className="hidden md:flex space-x-6">
-          <a href="#home" className="text-neutral-900 hover:text-neutral-600">Home</a>
+          {authenticated? 
+          <>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600"> Jobs</a>
+          <a href="#contact" className="text-neutral-900 hover:text-neutral-600">Punch Card </a>
+          <a href="#contribute" className="text-neutral-900 hover:text-neutral-600">Contribute</a>
+          <a href="#profile" className="flex items-center space-x-2 text-neutral-900 hover:text-neutral-600">
+          <FaRegUser className="ml-8"/>
+          <span>{username}</span>
+          </a>
+          </>
+          : 
+          <>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600"> Home</a>
           <a href="#contact" className="text-neutral-900 hover:text-neutral-600">Contact</a>
           <a href="#contribute" className="text-neutral-900 hover:text-neutral-600">Contribute</a>
+          </>
+          
+        }
+          
+          
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           <span className="block w-6 h-0.5 bg-neutral-900 mb-1"></span>

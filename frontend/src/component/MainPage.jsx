@@ -1,6 +1,7 @@
 import { LoginComponent } from "./Authentication/LoginComponent"
 import { useStore } from "../store/store.jsx";
 import { HomeBeforeAuth } from "./HomePage/HomeBeforeAuth.jsx";
+import { HomeAfterAuth } from "./HomePage/HomeAfterAuth.jsx";
 
 export const MainPage = () =>{
   const {authenticated} = useStore();
@@ -16,10 +17,10 @@ export const MainPage = () =>{
       </div>
     </div>
       }
-      
+
       {authenticated &&
       <>
-      <p>After authentication</p>
+      <HomeAfterAuth/>
       </>
       
       }
