@@ -48,7 +48,7 @@ export const LoginComponent = (props) => {
         }
 
         if(result.data.startsWith("token")){
-          sessionStorage.setItem("jwt",result.data.substring(5))
+          localStorage.setItem("jwt",result.data.substring(5))
           setAuthenticated(true)
         }
 

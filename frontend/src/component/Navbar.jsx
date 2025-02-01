@@ -30,7 +30,7 @@ export const Navbar = () => {
   getUserName()
 
   const onSignOut = () =>{
-    sessionStorage.removeItem("jwt")
+    localStorage.removeItem("jwt")
     setAuthenticated(false)
     
   }

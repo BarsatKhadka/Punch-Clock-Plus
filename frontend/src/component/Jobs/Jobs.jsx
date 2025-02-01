@@ -28,7 +28,7 @@ export const Jobs = () => {
 
     const getAllJobs = async () => {
         const backendUrl = import.meta.env.VITE_BACKEND_URL;
-        const token = sessionStorage.getItem("jwt");
+        const token = localStorage.getItem("jwt");
 
         const result = await axios.get(backendUrl + "/job/getAllJobs", {
             headers: {
@@ -41,7 +41,7 @@ export const Jobs = () => {
 
     const handleCreateJob = async () => {
         const backendUrl = import.meta.env.VITE_BACKEND_URL;
-        const token = sessionStorage.getItem("jwt");
+        const token = localStorage.getItem("jwt");
 
         try {
             const result = await axios.post(
