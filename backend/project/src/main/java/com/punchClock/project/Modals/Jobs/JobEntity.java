@@ -1,9 +1,7 @@
 package com.punchClock.project.Modals.Jobs;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.punchClock.project.Modals.TheUser;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +15,10 @@ public class JobEntity {
 
     private String jobName;
     private String jobDescription;
+
+    @ManyToOne
+    private TheUser createdByUser;
+
 
 
 }

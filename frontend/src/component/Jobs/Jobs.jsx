@@ -1,5 +1,7 @@
 import { MdOutlineSchedule } from "react-icons/md"; 
 import { HiOutlineUsers } from "react-icons/hi"; 
+import { useEffect } from "react";
+import { request } from "../../Utility/axios_helper";
 
 const JobsCard = (props) => {
     return (
@@ -17,6 +19,7 @@ const JobsCard = (props) => {
         </div>
     );
   };
+
 
 export const Jobs = () =>{
     return(

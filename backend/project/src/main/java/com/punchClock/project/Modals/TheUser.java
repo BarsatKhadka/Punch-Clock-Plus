@@ -1,9 +1,12 @@
 package com.punchClock.project.Modals;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.punchClock.project.Modals.Jobs.JobEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,4 +38,5 @@ public class TheUser {
     public TheUser() {
 
     }
+
 }
