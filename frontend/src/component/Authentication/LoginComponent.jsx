@@ -95,9 +95,9 @@ export const LoginComponent = (props) => {
             Log in
           </button>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-600">
-          <span className="text-red-500">Don't have an account?{" "}</span>
-          <a href="" className="text-gray-500 hover:underline lg:ml-2 ml-1" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
+        <p className="mt-6 text-center text-sm text-white-600">
+          <span className="text-white-500 font-bold">Don't have an account?{" "}</span>
+          <a href="" className="text-red-500 hover:underline lg:ml-2 ml-1" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
              Sign up 
           </a>  
         </p>

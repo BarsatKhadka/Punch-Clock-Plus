@@ -97,9 +97,9 @@ export const SignUp = () =>{
           Sign Up
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-green-600">
-        Already have an account?{" "}
-        <a href="/login" className="text-gray-500 hover:underline ml-1 lg:ml-2" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
+      <p className="mt-6 text-center text-sm text-white-600">
+       <span className="font-bold">Already have an account?{" "}</span> 
+        <a href="/login" className="text-red-500 hover:underline ml-1 lg:ml-2" onClick= {(e) =>{e.preventDefault(); (setLoginOrSignUp(!loginOrSignUp))}}>
           Login
         </a>
       </p>
