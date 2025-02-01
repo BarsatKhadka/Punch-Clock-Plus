@@ -1,10 +1,7 @@
 import { MdOutlineSchedule } from "react-icons/md"; 
 import { HiOutlineUsers } from "react-icons/hi"; 
-import { useEffect } from "react";
-import { request } from "../../Utility/axios_helper";
-// import { useStore } from "../../store/store.jsx";
-
-// const {authenticated} = useStore();
+import { useEffect , useState } from "react";
+import axios from "axios";
 
 const JobsCard = (props) => {
     return (
@@ -26,12 +23,43 @@ const JobsCard = (props) => {
 
 
 export const Jobs = () =>{
+    const[allJobs,setAllJobs] = useState([])
+
+    const getAllJobs = async () => {
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const token = sessionStorage.getItem("jwt");
+
+        const result = await axios.get(backendUrl+"/job/getAllJobs",
+             {headers: {
+            "Authorization": token ? `Bearer ${token}` : "",
+        }});
+    
+        setAllJobs(result?.data);
+        console.log(result.data)
+    };
+
+    useEffect(() =>{
+        getAllJobs()
+    },[])
 
     return(
         <>
         <div className="ml-8 mt-12">
         <span className="font-semibold"> Your Jobs</span> 
-        <JobsCard JobName="step"/>
+        {allJobs.length > 0 ? (
+                    allJobs.map((job,index) => {
+                        return (
+                            <JobsCard
+                                key={index} 
+                                JobName={job.jobName} 
+                                JobDescription={job.jobDescription}
+                            />
+                        );
+                    })
+                ) : (
+                    <p>No jobs available</p>
+                )}
+        
         </div>
         </>
     )
