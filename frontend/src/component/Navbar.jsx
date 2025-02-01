@@ -2,23 +2,28 @@ import { useState } from "react";
 import Logo from "../assets/Logo.png"
 import { useStore } from "../store/store.jsx";
 import { jwtDecode } from "jwt-decode";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaSignOutAlt } from "react-icons/fa";
 
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {authenticated} = useStore()
+  const {authenticated,setAuthenticated} = useStore()
 
   let username = "Guest"
   const getUserName = () =>{
     const jwt = sessionStorage.getItem("jwt");
     let decodedToken = null
+  
+    if(jwt){
     decodedToken = jwtDecode(jwt)
+    }
+
     username = (decodedToken?.sub)
 
   }
 
   getUserName()
+
 
   return (
     <nav className="bg-neutral-200 text-neutral-900 p-2 shadow-sm border-b border-black">
@@ -33,10 +38,17 @@ export const Navbar = () => {
           <a href="#home" className="text-neutral-900 hover:text-neutral-600"> Jobs</a>
           <a href="#contact" className="text-neutral-900 hover:text-neutral-600">Punch Card </a>
           <a href="#contribute" className="text-neutral-900 hover:text-neutral-600">Contribute</a>
-          <a href="#profile" className="flex items-center space-x-2 text-neutral-900 hover:text-neutral-600">
+          <a href="#" className="flex items-center space-x-2 text-neutral-900 hover:text-neutral-600">
           <FaRegUser className="ml-8"/>
-          <span>{username}</span>
+          <span className="hover:text-green-600">{username}</span>
           </a>
+          <button 
+          // onClick={onSignOut} 
+          className="flex items-center space-x-2 text-neutral-900 hover:text-red-600"
+        >
+          <FaSignOutAlt />
+          <span>Sign Out</span>
+        </button>
           </>
           : 
           <>
