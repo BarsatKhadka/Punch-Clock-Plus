@@ -3,6 +3,11 @@ import Logo from "../assets/Logo.png"
 import { useStore } from "../store/store.jsx";
 import { jwtDecode } from "jwt-decode";
 import { FaRegUser, FaSignOutAlt } from "react-icons/fa";
+import { IoBriefcaseOutline } from "react-icons/io5";
+import { MdOutlineSchedule } from "react-icons/md"; 
+import { FaRegClock } from "react-icons/fa"; 
+import { HiOutlineUsers } from "react-icons/hi"; 
+import { IoDocumentTextOutline } from "react-icons/io5"; 
 
 
 export const Navbar = () => {
@@ -40,9 +45,21 @@ export const Navbar = () => {
         <div className="hidden md:flex space-x-6">
           {authenticated? 
           <>
-          <a href="#home" className="text-neutral-900 hover:text-neutral-600"> Jobs</a>
-          <a href="#contact" className="text-neutral-900 hover:text-neutral-600">Punch Card </a>
-          <a href="#contribute" className="text-neutral-900 hover:text-neutral-600">Contribute</a>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <IoBriefcaseOutline className="inline mr-2" /> Jobs
+            </a>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <MdOutlineSchedule className="inline mr-2" /> Shifts
+          </a>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <FaRegClock className="inline mr-2" /> Punches
+          </a>
+          <a href="#contact" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <HiOutlineUsers className="inline mr-2" /> Employees
+          </a>
+          <a href="#contribute" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <IoDocumentTextOutline className="inline mr-2" /> Reports
+          </a>
           <a href="#" className="flex items-center space-x-2 text-neutral-900 hover:text-neutral-600">
           <FaRegUser className="ml-8"/>
           <span className="hover:text-green-600">{username}</span>
