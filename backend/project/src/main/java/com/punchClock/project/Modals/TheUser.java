@@ -1,6 +1,7 @@
 package com.punchClock.project.Modals;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.punchClock.project.Modals.EmployeeEntity.EmployeeEntity;
 import com.punchClock.project.Modals.Jobs.JobEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -38,5 +39,8 @@ public class TheUser {
     public TheUser() {
 
     }
+
+    @OneToMany(mappedBy = "theUser")
+    private List<EmployeeEntity> employee;
 
 }
