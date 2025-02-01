@@ -6,6 +6,7 @@ export const CurrentTime = () =>{
     const[time,setTime] = useState(new Date())
     const [currentDay, setCurrentDay] = useState(new Date().getDay()); 
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth()); 
+    const [currentDate, setCurrentDate] = useState(new Date().getDate())
 
     const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -15,6 +16,7 @@ export const CurrentTime = () =>{
             setTime(new Date())
             setCurrentDay(new Date().getDay())
             setCurrentMonth(new Date().getMonth())
+            setCurrentDate(new Date().getDate())
         },59000);
 
         return () =>{
@@ -45,6 +47,7 @@ export const CurrentTime = () =>{
         <p>{days[currentDay]}</p>
         {/* same for this in js */}
         <p>{months[currentMonth]}</p>
+        <p>{currentDate}</p>
         
         </>
     )
