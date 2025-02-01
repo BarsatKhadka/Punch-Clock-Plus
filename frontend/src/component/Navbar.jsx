@@ -91,9 +91,43 @@ export const Navbar = () => {
       </div>
       {isOpen && (
         <div className="md:hidden flex flex-col mt-4 space-y-4 bg-neutral-200 p-4">
-          <a href="#home" className="text-neutral-900 hover:text-neutral-600">Home</a>
+          {authenticated? 
+          <>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <IoBriefcaseOutline className="inline mr-2" /> Jobs
+            </a>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <MdOutlineSchedule className="inline mr-2" /> Shifts
+          </a>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <FaRegClock className="inline mr-2" /> Punches
+          </a>
+          <a href="#contact" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <HiOutlineUsers className="inline mr-2" /> Employees
+          </a>
+          <a href="#contribute" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <IoDocumentTextOutline className="inline mr-2" /> Reports
+          </a>
+          <a href="#" className="flex items-center space-x-2 text-neutral-900 hover:text-neutral-600">
+          <FaRegUser className="lg:ml-8"/>
+          <span className="hover:text-green-600">{username}</span>
+          </a>
+          <button 
+          onClick={onSignOut} 
+          className="flex items-center space-x-2 text-neutral-900 hover:text-red-600"
+        >
+          <FaSignOutAlt />
+          <span>Sign Out</span>
+        </button>
+          </>
+          : 
+          <>
+          <a href="#home" className="text-neutral-900 hover:text-neutral-600"> Home</a>
           <a href="#contact" className="text-neutral-900 hover:text-neutral-600">Contact</a>
           <a href="#contribute" className="text-neutral-900 hover:text-neutral-600">Contribute</a>
+          </>
+          
+        }
         </div>
       )}
     </nav>
