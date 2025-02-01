@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface JobRepo extends JpaRepository<JobEntity, Integer> {
     List<JobEntity> findAllByCreatedByUser(TheUser user);
+    JobEntity findJobByCreatedByUserAndJobName(TheUser user, String jobName);
 }

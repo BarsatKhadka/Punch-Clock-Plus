@@ -15,4 +15,6 @@ public class EmployeeDTO {
         this.employeeName = employeeName;
         this.employeePin = employeePin;
     }
+
+    private String jobName;
 }
