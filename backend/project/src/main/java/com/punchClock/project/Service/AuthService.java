@@ -59,9 +59,7 @@ public class AuthService {
         if(matches) {
             Authentication authentication = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            return jwtUtils.generateToken(loginRequest.getUsername());
-
-
+            return "token"+jwtUtils.generateToken(loginRequest.getUsername());
         }
 
         return "invalid";
