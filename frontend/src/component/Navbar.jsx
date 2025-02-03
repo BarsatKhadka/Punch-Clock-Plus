@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   let username = "Guest"
   const getUserName = () =>{
-    const jwt = sessionStorage.getItem("jwt");
+    const jwt = localStorage.getItem("jwt");
     let decodedToken = null
   
     if(jwt){
