@@ -36,6 +36,8 @@ public class createEmployeeService {
         newEmployee.setEmployeeName(employeeDTO.getEmployeeName());
         newEmployee.setEmployeePin(employeeDTO.getEmployeePin());
         newEmployee.setJobEntity(job);
+        //employees user is the admin
+        newEmployee.setTheAdmin(user);
         employeeRepo.save(newEmployee);
         return newEmployee;
 

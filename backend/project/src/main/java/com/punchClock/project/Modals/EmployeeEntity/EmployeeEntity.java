@@ -22,6 +22,6 @@ public class EmployeeEntity {
     private JobEntity jobEntity;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private TheUser theUser;
+    private TheUser theAdmin;
 
 }

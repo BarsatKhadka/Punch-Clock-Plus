@@ -1,5 +1,6 @@
 package com.punchClock.project.Modals;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.punchClock.project.Modals.EmployeeEntity.EmployeeEntity;
 import com.punchClock.project.Modals.Jobs.JobEntity;
@@ -40,7 +41,8 @@ public class TheUser {
 
     }
 
-    @OneToMany(mappedBy = "theUser")
+    @OneToMany(mappedBy = "theAdmin")
+    @JsonBackReference
     private List<EmployeeEntity> employee;
 
 }
