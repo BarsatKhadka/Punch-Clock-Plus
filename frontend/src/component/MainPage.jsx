@@ -9,10 +9,10 @@ export const MainPage = () => {
     <>
       {!authenticated && (
         <div className="h-screen flex">
-          <div className="lg:w-3/4 w-2/4 bg-blue-500 p-8 text-white">
+          <div className="lg:w-3/4 w-2/4 bg-black p-8 text-white">
             <HomeBeforeAuth />
           </div>
-          <div className="lg:w-1/4 w-2/4 bg-green-500 p-8 shadow-lg text-white">
+          <div className="lg:w-1/4 w-2/4 bg-gradient-to-b from-teal-500 to-teal-700  p-8 shadow-lg text-white">
             <LoginComponent />
           </div>
         </div>

@@ -84,7 +84,7 @@ export const Jobs = () => {
                 <span className="font-semibold">Your Jobs
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        className="ml-[200px] lg:ml-[600px] bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200"
+                        className="ml-[200px] lg:ml-[600px] bg-white text-black px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200"
                     >
                         Create Job
                     </button>
