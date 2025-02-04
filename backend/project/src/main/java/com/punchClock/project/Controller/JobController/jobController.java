@@ -4,6 +4,7 @@ import com.punchClock.project.DTO.JobDTO.JobDTO;
 import com.punchClock.project.Modals.Jobs.JobEntity;
 import com.punchClock.project.Service.JobService.createJobService;
 import com.punchClock.project.Service.JobService.getAllJobsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class jobController {
     }
 
     @PostMapping("/create")
-    public JobEntity createJob(@RequestBody JobDTO jobDTO) {
+    public ResponseEntity<String> createJob(@RequestBody JobDTO jobDTO) {
         return createJobService.createJob(jobDTO);
     }
 
