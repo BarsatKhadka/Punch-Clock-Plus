@@ -104,6 +104,43 @@ export const Jobs = () => {
                         </button>
                     ))}
                 </div>
+
+                {isModalOpen && (
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                        <h3 className="font-semibold text-lg mb-4 text-black">Create New Job</h3>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Job Name"
+                                value={jobName}
+                                onChange={(e) => setJobName(e.target.value)}
+                                className="border border-gray-300 rounded-lg p-2 mb-4 w-full text-black"
+                            />
+                            <textarea
+                                placeholder="Job Description"
+                                value={jobDescription}
+                                onChange={(e) => setJobDescription(e.target.value)}
+                                className="border border-gray-300 rounded-lg p-2 mb-4 w-full text-black"
+                            ></textarea>
+                        </div>
+                        <div className="flex justify-end gap-2">
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleCreateJob}
+                                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                            >
+                                Create Job
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             </div>
         </>
     );
