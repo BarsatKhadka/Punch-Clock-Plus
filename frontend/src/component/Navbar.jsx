@@ -46,9 +46,9 @@ export const Navbar = () => {
         <div className="hidden md:flex space-x-6">
           {authenticated? 
           <>
-          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+          <Link to="/" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <IoBriefcaseOutline className="inline mr-2" /> Jobs
-            </a>
+            </Link>
           <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <MdOutlineSchedule className="inline mr-2" /> Shifts
           </a>
@@ -94,9 +94,9 @@ export const Navbar = () => {
         <div className="md:hidden flex flex-col mt-4 space-y-4 bg-neutral-200 p-4">
           {authenticated? 
           <>
-          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+          <Link to="/" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <IoBriefcaseOutline className="inline mr-2" /> Jobs
-            </a>
+            </Link>
           <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <MdOutlineSchedule className="inline mr-2" /> Shifts
           </a>
