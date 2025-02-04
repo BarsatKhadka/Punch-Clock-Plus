@@ -24,16 +24,18 @@ public class createJobService {
     public ResponseEntity<?> createJob(JobDTO jobDTO) {
         TheUser user = userRepo.findByUsername(getAuthenticatedUsername.getCurrentUsername());
 
-        JobEntity newJobEntity = new JobEntity();
+
         boolean jobExists = jobRepo.existsByCreatedByUserAndJobName(user, jobDTO.getJobName());
         if (!jobExists) {
+            JobEntity newJobEntity = new JobEntity();
             newJobEntity.setJobName(jobDTO.getJobName());
             newJobEntity.setJobDescription(jobDTO.getJobDescription());
             newJobEntity.setCreatedByUser(user);
             jobRepo.save(newJobEntity);
             return ResponseEntity.ok(newJobEntity);
         }
-        return ResponseEntity.badRequest().body("Job could not be created");
+        return ResponseEntity.ok("duplicate");
+
     }
 
 }

@@ -26,6 +26,7 @@ export const Jobs = () => {
     const [jobName, setJobName] = useState("");
     const [jobDescription, setJobDescription] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+    const[error, setError] = useState("");
     const jobsPerPage = 5;
 
     const getAllJobs = async () => {
@@ -55,6 +56,10 @@ export const Jobs = () => {
                     },
                 }
             );
+            if(result?.data == "duplicate"){
+                setError(result.data)
+                return;
+            }
 
             setAllJobs(prevJobs => [...prevJobs, result.data]);
             setIsModalOpen(false);
@@ -108,7 +113,8 @@ export const Jobs = () => {
                 {isModalOpen && (
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-                        <h3 className="font-semibold text-lg mb-4 text-black">Create New Job</h3>
+                        <h3 className="font-semibold text-lg mb-4 text-black">Create New Job </h3>
+                        {error && <p className="text-red-500 text-sm mb-2">{error === "duplicate" ? "This job already exists!" : "An error occurred. Please try again."}</p>}
                         <div>
                             <input
                                 type="text"
@@ -139,6 +145,7 @@ export const Jobs = () => {
                             </button>
                         </div>
                     </div>
+                   
                 </div>
             )}
             </div>
