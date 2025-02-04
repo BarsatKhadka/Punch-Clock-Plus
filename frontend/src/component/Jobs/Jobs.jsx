@@ -56,6 +56,7 @@ export const Jobs = () => {
                     },
                 }
             );
+
             setAllJobs(prevJobs => [...prevJobs, result.data]);
             setIsModalOpen(false);
         } catch (error) {

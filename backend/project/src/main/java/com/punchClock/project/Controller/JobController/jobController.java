@@ -20,7 +20,7 @@ public class jobController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createJob(@RequestBody JobDTO jobDTO) {
+    public ResponseEntity<?> createJob(@RequestBody JobDTO jobDTO) {
         return createJobService.createJob(jobDTO);
     }
 

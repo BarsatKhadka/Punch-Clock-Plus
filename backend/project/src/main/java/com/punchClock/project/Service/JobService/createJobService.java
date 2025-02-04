@@ -21,7 +21,7 @@ public class createJobService {
         this.getAuthenticatedUsername = getAuthenticatedUsername;
     }
 
-    public ResponseEntity<String> createJob(JobDTO jobDTO) {
+    public ResponseEntity<?> createJob(JobDTO jobDTO) {
         TheUser user = userRepo.findByUsername(getAuthenticatedUsername.getCurrentUsername());
 
         JobEntity newJobEntity = new JobEntity();
@@ -31,7 +31,7 @@ public class createJobService {
             newJobEntity.setJobDescription(jobDTO.getJobDescription());
             newJobEntity.setCreatedByUser(user);
             jobRepo.save(newJobEntity);
-            return ResponseEntity.ok("success");
+            return ResponseEntity.ok(newJobEntity);
         }
         return ResponseEntity.badRequest().body("Job could not be created");
     }
