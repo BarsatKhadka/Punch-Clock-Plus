@@ -8,6 +8,7 @@ import { MdOutlineSchedule } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa"; 
 import { HiOutlineUsers } from "react-icons/hi"; 
 import { IoDocumentTextOutline } from "react-icons/io5"; 
+import { Link } from "react-router-dom";
 
 
 export const Navbar = () => {
@@ -54,9 +55,9 @@ export const Navbar = () => {
           <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <FaRegClock className="inline mr-2" /> Punches
           </a>
-          <a href="#contact" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+          <Link to="/employees" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <HiOutlineUsers className="inline mr-2" /> Employees
-          </a>
+            </Link>
           <a href="#contribute" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <IoDocumentTextOutline className="inline mr-2" /> Reports
           </a>
@@ -102,7 +103,7 @@ export const Navbar = () => {
           <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <FaRegClock className="inline mr-2" /> Punches
           </a>
-          <a href="#contact" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+          <a href="/employees" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <HiOutlineUsers className="inline mr-2" /> Employees
           </a>
           <a href="#contribute" className="text-neutral-900 hover:text-neutral-600 flex items-center">

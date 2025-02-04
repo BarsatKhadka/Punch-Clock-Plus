@@ -1,18 +1,20 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { MainPage } from './component/MainPage'
 import { Navbar } from './component/Navbar'
-import { TestPage } from './component/TestPage'
+import { Employees } from './component/Employees/Employees.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <Navbar/>
-    <MainPage/>
-    {/* <TestPage/> */}
-   
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/employees" element={<Employees />} />
+      </Routes>
+    </Router>
   )
 }
 
