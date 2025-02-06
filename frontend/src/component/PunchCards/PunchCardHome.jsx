@@ -3,7 +3,7 @@ import React from 'react';
 export const PunchCardHome = () => {
   return (
     <div className="w-80 p-6 border border-gray-300 rounded-lg shadow-lg bg-gray-50 text-center mt-8 ml-8">
-      <h2 className="text-xl font-semibold mb-4">Punch Card</h2>
+      <h2 className="text-xl font-semibold mb-4 text-gray-700">Punch Card</h2>
       <div className="mb-6 text-gray-700">
         <p>Please punch in or out</p>
       </div>
