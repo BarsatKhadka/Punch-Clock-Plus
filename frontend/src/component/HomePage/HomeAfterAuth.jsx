@@ -1,5 +1,6 @@
 import { CurrentTime } from "../CurrentTime/CurrentTime";
 import { Jobs } from "../Jobs/Jobs";
+import { PunchCardHome } from "../PunchCards/PunchCardHome";
 export const HomeAfterAuth = () => {
     return (
       <div className="flex flex-col md:flex-row h-screen ">
@@ -9,8 +10,11 @@ export const HomeAfterAuth = () => {
         <div className="flex-1 bg-gradient-to-b from-teal-500 to-teal-700 flex text-white text-2xl">
         <div className="flex-1  text-white text-2xl h-fit">
         <CurrentTime />
+        <PunchCardHome/>
       </div>
+      
       </div>
+      
       </div>
     );
   };

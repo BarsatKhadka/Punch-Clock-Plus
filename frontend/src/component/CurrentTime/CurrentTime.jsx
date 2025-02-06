@@ -48,6 +48,7 @@ export const CurrentTime = () =>{
                 {days[currentDay]}, {months[currentMonth]} {currentDate}
             </p>
             </div>
+            
         
         </>
     )
