@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { MainPage } from './component/MainPage'
 import { Navbar } from './component/Navbar'
-import { Employees } from './component/Employees/Employees.jsx'
+import { Employees } from './component/Employees/Employees'
 
 function App() {
   const [count, setCount] = useState(0)
