@@ -1,11 +1,12 @@
 package com.punchClock.project.Modals.ShiftEntity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.punchClock.project.Modals.EmployeeEntity.EmployeeEntity;
+import com.punchClock.project.Modals.TheUser;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +18,10 @@ public class ShiftEntity {
 
     private String shiftName;
     private String shiftTime;
+
+    @ManyToMany
+    private List<EmployeeEntity> employees;
+
+    @ManyToOne
+    private TheUser admin;
 }

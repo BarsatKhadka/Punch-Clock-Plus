@@ -1,10 +1,13 @@
 package com.punchClock.project.Modals.EmployeeEntity;
 
 import com.punchClock.project.Modals.Jobs.JobEntity;
+import com.punchClock.project.Modals.ShiftEntity.ShiftEntity;
 import com.punchClock.project.Modals.TheUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,5 +26,8 @@ public class EmployeeEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private TheUser theAdmin;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<ShiftEntity> shiftEntityList;
 
 }
