@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { MainPage } from './component/MainPage'
 import { Navbar } from './component/Navbar'
 import { Employees } from './component/Employees/Employees'
+import { Shift } from './component/Shift/Shft'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/employees" element={<Employees />} />
+        <Route path="/shift" element={<Shift/>}/>
       </Routes>
     </Router>
   )

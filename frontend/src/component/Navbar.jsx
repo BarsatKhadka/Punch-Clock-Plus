@@ -49,9 +49,9 @@ export const Navbar = () => {
           <Link to="/" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <IoBriefcaseOutline className="inline mr-2" /> Jobs
             </Link>
-          <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
+            <Link to="/shift" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <MdOutlineSchedule className="inline mr-2" /> Shifts
-          </a>
+          </Link>
           <a href="#home" className="text-neutral-900 hover:text-neutral-600 flex items-center">
             <FaRegClock className="inline mr-2" /> Punches
           </a>
