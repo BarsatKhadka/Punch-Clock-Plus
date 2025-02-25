@@ -11,4 +11,5 @@ import java.util.List;
 public interface EmployeeRepo extends JpaRepository<EmployeeEntity,Integer> {
     List<EmployeeEntity> findAllByTheAdmin(TheUser theAdmin);
     EmployeeEntity findByEmployeePin(Integer employeePin);
+    boolean existsByEmployeePin(Integer employeePin);
 }
