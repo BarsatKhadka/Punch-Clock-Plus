@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/employee")
 public class employeeController {
     private final createEmployeeService employeeService;
-    private final com.punchClock.project.Service.EmployeeService.getAllEmployeeService getAllEmployeeService;
+    private final getAllEmployeeService getAllEmployeeService;
 
     public employeeController(createEmployeeService employeeService, getAllEmployeeService getAllEmployeeService) {
         this.employeeService = employeeService;

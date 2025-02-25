@@ -3,6 +3,7 @@ package com.punchClock.project.Modals.Jobs;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.punchClock.project.Modals.EmployeeEntity.EmployeeEntity;
+import com.punchClock.project.Modals.PunchEntity.PunchEntity;
 import com.punchClock.project.Modals.TheUser;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -27,6 +28,9 @@ public class JobEntity {
     @OneToMany(mappedBy = "jobEntity")
     @JsonBackReference
     private List<EmployeeEntity> employeeEntity;
+
+    @OneToOne
+    private PunchEntity punchEntity;
 
 
 

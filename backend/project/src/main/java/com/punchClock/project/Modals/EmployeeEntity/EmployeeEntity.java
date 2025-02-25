@@ -1,6 +1,7 @@
 package com.punchClock.project.Modals.EmployeeEntity;
 
 import com.punchClock.project.Modals.Jobs.JobEntity;
+import com.punchClock.project.Modals.PunchEntity.PunchEntity;
 import com.punchClock.project.Modals.ShiftEntity.ShiftEntity;
 import com.punchClock.project.Modals.TheUser;
 import jakarta.persistence.*;
@@ -29,5 +30,9 @@ public class EmployeeEntity {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<ShiftEntity> shiftEntityList;
+
+    @OneToOne
+    private PunchEntity punchEntity;
+
 
 }
