@@ -5,4 +5,4 @@ export const HomeBeforeAuth = () =>{
         <p className="mt-4 text-lg">Here is where your main content goes!</p>
         </>
     )
-}
+}   
