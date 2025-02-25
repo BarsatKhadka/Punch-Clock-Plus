@@ -50,14 +50,14 @@ export const PunchCardHome = () => {
           placeholder="Employee PIN"
           value={employeePin}
           onChange={(e) => setEmployeePin(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded mb-2"
+          className="w-full p-2 border border-gray-300 rounded mb-2 text-black"
         />
         <input
           type="text"
           placeholder="Job Name"
           value={jobName}
           onChange={(e) => setJobName(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-gray-300 rounded text-black"
         />
       </div>
       
