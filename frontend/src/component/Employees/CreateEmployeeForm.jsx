@@ -75,15 +75,15 @@ export const CreateEmployeeForm = ({ onEmployeeCreated }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Create New Employee</h2>
+    <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold mb-4 text-white">Create New Employee</h2>
       
-      {error && <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">{error}</div>}
-      {success && <div className="mb-4 p-2 bg-green-100 text-green-700 rounded">{success}</div>}
+      {error && <div className="mb-4 p-2 bg-red-900 text-red-200 rounded">{error}</div>}
+      {success && <div className="mb-4 p-2 bg-green-900 text-green-200 rounded">{success}</div>}
       
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="employeeName">
+          <label className="block text-gray-300 mb-2" htmlFor="employeeName">
             Employee Name
           </label>
           <input
@@ -91,13 +91,13 @@ export const CreateEmployeeForm = ({ onEmployeeCreated }) => {
             type="text"
             value={employeeName}
             onChange={(e) => setEmployeeName(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white"
             required
           />
         </div>
         
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="employeePin">
+          <label className="block text-gray-300 mb-2" htmlFor="employeePin">
             Employee PIN
           </label>
           <input
@@ -105,20 +105,20 @@ export const CreateEmployeeForm = ({ onEmployeeCreated }) => {
             type="number"
             value={employeePin}
             onChange={(e) => setEmployeePin(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white"
             required
           />
         </div>
         
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="jobName">
+          <label className="block text-gray-300 mb-2" htmlFor="jobName">
             Job
           </label>
           <select
             id="jobName"
             value={jobName}
             onChange={(e) => setJobName(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white"
             required
           >
             <option value="">Select a job</option>
@@ -134,7 +134,7 @@ export const CreateEmployeeForm = ({ onEmployeeCreated }) => {
           type="submit"
           disabled={loading}
           className={`w-full p-2 text-white rounded ${
-            loading ? 'bg-blue-300' : 'bg-blue-500 hover:bg-blue-600'
+            loading ? 'bg-blue-700' : 'bg-blue-600 hover:bg-blue-500'
           }`}
         >
           {loading ? 'Creating...' : 'Create Employee'}
@@ -142,4 +142,4 @@ export const CreateEmployeeForm = ({ onEmployeeCreated }) => {
       </form>
     </div>
   );
-}; home
+};
