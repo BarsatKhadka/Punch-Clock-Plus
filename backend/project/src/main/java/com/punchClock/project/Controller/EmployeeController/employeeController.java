@@ -4,6 +4,7 @@ import com.punchClock.project.DTO.EmployeeDTO.EmployeeDTO;
 import com.punchClock.project.Modals.EmployeeEntity.EmployeeEntity;
 import com.punchClock.project.Service.EmployeeService.createEmployeeService;
 import com.punchClock.project.Service.EmployeeService.getAllEmployeeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,13 @@ public class employeeController {
     }
 
     @PostMapping("/create")
-    public EmployeeEntity createEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        return employeeService.createEmployee(employeeDTO);
+    public ResponseEntity<?> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        try {
+            EmployeeEntity employee = employeeService.createEmployee(employeeDTO);
+            return ResponseEntity.ok(employee);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/getAllEmployees")
